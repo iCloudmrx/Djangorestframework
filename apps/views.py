@@ -22,7 +22,16 @@ class BookDetailApiView(generics.RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
+class BookCreateApiView(generics.CreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
 
+class BookListCreateApiView(generics.ListCreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+class BookDetailUpdateDeleteApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
 
 @api_view(['GET'])
 def book_list_view(request,*args,**kwargs):

@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     #local apps
     'apps',
     # apps
-    'rest_framework'
+    'rest_framework',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
