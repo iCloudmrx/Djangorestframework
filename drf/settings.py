@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites', #new
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,7 +42,13 @@ INSTALLED_APPS = [
     'apps',
     # apps
     'rest_framework',
-    'drf_yasg'
+    'rest_framework.authtoken',
+    'drf_yasg',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +62,17 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'drf.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated', #barcha endpointlat authenticationli
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication', #
+    ]
+}
+
 
 TEMPLATES = [
     {
@@ -126,3 +144,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend' #new
+SITE_ID=1 #NEW
